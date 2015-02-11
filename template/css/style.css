@@ -1,0 +1,24 @@
+ol, ul {
+	list-style: none;
+}
+
+img {border:none;}
+
+a {text-decoration:none; color:black;}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body {
+	background:url('../img/body.jpg');
+	
+}
+
+.wrapper { 
+	min-width: 1000px; 
+	max-width: 1000px; 
+	margin: 0 auto;
+    margin-top:-30px;
+}
