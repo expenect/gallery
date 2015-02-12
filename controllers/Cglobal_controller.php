@@ -11,6 +11,7 @@ abstract class CGlobal{
         $this->config = new config();
         $this->template = new template($this->config->dir_template);
         $this->template->set("meta_desc", $this->meta_desc);
+        $this->template->set("dir_img",$this->config->dir_template.$this->config->dir_img);
         $this->template->set("meta_key", $this->meta_key);
         $this->template->set("css", $this->config->dir_template.$this->config->dir_css);
         $this->template->set("title",$this->config->sitename);

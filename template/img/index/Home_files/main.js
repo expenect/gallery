@@ -1,0 +1,1 @@
+jQuery(function($){$('body').css('padding-top',$('#sp-header-wrapper').height());if($(window).height()>665){$('#sp-smart-slider.sp-iStoreii-layout, .sp-iStoreii-layout .sp-slider-item').css('height',$(window).height()- $('#sp-header-wrapper').height());}});
