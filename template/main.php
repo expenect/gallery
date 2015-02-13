@@ -11,12 +11,12 @@
 <body>
         <div id="layer_head">
             <div class="wrapper">
-                <a href="index.html">
+                <a href="<?=$this->link_site;?>">
                     <div id="logo"></div>
                 </a>
                 <ul id="menu">
                     <li>
-                        <a href="">
+                        <a href="<?=$this->link_site;?>">
                             Синхроный
                         </a>
                     </li>

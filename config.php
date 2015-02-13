@@ -3,6 +3,7 @@ class config{
     public $sitename = "gallery";
 
     public $name_autor = "expenect";
+    public $link_site = "http://work.com";
 
     public $views_dir = "views/";
     public $dir_img = "img/";

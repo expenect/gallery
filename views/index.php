@@ -1,21 +1,15 @@
 <div class="wrapper">
     <table class="cont_tab">
         <tbody>
+        <?for ($i=0; $i<count($this->photo); $i++){
+            if ($i%3==0 || $i==0){?>
         <tr>
-            <td><a href="#"><div class="img_resize"><img src="../<?=$this->dir_img;?>index/3_800x520.jpg" alt=""/></div>Велоcипед</a>    <p>Картинка 1</p></td>
-            <td><a href="#"><div class="img_resize"><img src="../<?=$this->dir_img;?>/index/6_800x520.jpg" alt=""/></div>Кохання</a>     <p>Картинка 2</p></td>
-            <td><a href="#"><div class="img_resize"><img src="../<?=$this->dir_img;?>index/7_800x520.jpg" alt=""/></div>Краєвид</a>   <p>Картинка 3</p></td>
+            <?}?>
+            <td><a href="#"><div class="img_resize"><img src="../<?=$this->dir_img.$this->photo[$i]["url"];?>" alt=""/></div><?=$this->photo[$i]["description"];?></a>    <p><?=date("d.m.Y",strtotime($this->photo[$i]["date"]));?></p></td>
+            <?if (($i%4==0 && $i!=0) || $i+1==count($this->photo)){?>
         </tr>
-        <tr>
-            <td><a href="#"><div class="img_resize"><img src="../<?=$this->dir_img;?>index/3_800x520.jpg" alt=""/></div>Велоcипед</a>    <p>Картинка 1</p></td>
-            <td><a href="#"><div class="img_resize"><img src="../<?=$this->dir_img;?>/index/6_800x520.jpg" alt=""/></div>Кохання</a>     <p>Картинка 2</p></td>
-            <td><a href="#"><div class="img_resize"><img src="../<?=$this->dir_img;?>index/7_800x520.jpg" alt=""/></div>Краєвид</a>   <p>Картинка 3</p></td>
-        </tr>
-        <tr>
-            <td><a href="#"><div class="img_resize"><img src="../<?=$this->dir_img;?>index/3_800x520.jpg" alt=""/></div>Велоcипед</a>    <p>Картинка 1</p></td>
-            <td><a href="#"><div class="img_resize"><img src="../<?=$this->dir_img;?>/index/6_800x520.jpg" alt=""/></div>Кохання</a>     <p>Картинка 2</p></td>
-            <td><a href="#"><div class="img_resize"><img src="../<?=$this->dir_img;?>index/7_800x520.jpg" alt=""/></div>Краєвид</a>   <p>Картинка 3</p></td>
-        </tr>
+            <?}?>
+        <?}?>
         </tbody>
     </table>
 </div>
