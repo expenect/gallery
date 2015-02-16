@@ -1,1 +1,0 @@
-jQuery.noConflict();var spnoConflict=jQuery.noConflict();
