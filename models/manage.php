@@ -4,6 +4,12 @@ require_once ("database.php");
 class manage{
 
     private $data = array();
+    private $dir_img;
+
+    public function __construct(){
+        $config = new config();
+        $this->dir_img="../".$config->dir_template.$config->dir_img;
+    }
 
     public function add_photo($data){
         session_start();
@@ -57,6 +63,17 @@ class manage{
             $_SESSION["message"] = "Помилка при редагувані запису!";
             return false;
         }
+        return true;
+    }
+
+    public function delete_photo($data){
+        $file_url = $this->dir_img.$data["url_photo"];
+        if (file_exists($file_url)){
+            unset($file_url);
+        }
+        $model = datebase::getDB();
+        $model->query("DELETE FROM `gallery`.`photo` WHERE `photo`.`id` = ".$data['id']);
+
         return true;
     }
 

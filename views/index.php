@@ -27,7 +27,7 @@
         <tr>
             <?} $j++;?>
             <td>
-                <a href=""><img src="../template/img/delete.png" id="img_delete"/></a>
+                <a href="?link=delete&id=<?=$this->photo[$i]['id']?>"><img src="../template/img/delete.png" id="img_delete"/></a>
                 <a href="?link=edit&id=<?=$this->photo[$i]['id']?>">
                     <div class="img_resize">
                         <img src="../<?=$this->dir_img.$this->photo[$i]["url"];?>" alt=""/>
