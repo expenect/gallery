@@ -1,4 +1,5 @@
 <?
+session_start();
 header("Content-Type:text/html;charset='utf8'");
 
 require_once("config.php");

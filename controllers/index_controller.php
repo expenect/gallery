@@ -6,7 +6,12 @@ class Index extends CGlobal{
 
     public function getContent(){
         $model = new Model("photo");
-        $this->template->set("photo",$model->getALL());
+        if (!$_GET['sort']){
+            $this->template->set("photo", $model->getALL());
+        }
+        else{
+            $this->template->set("photo", $model->getAll(trim (strip_tags ($_GET['sort']))));
+        }
         return "index";
     }
 }

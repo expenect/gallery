@@ -1,5 +1,5 @@
 <?
-require_once("config.php");
+
 class datebase{
 
     private static $db = null;
@@ -29,6 +29,15 @@ class datebase{
             $array[] = $row;
         }
         return $array;
+    }
+
+    public function query($query){
+        $success=$this->mysqli->query($query);
+        if ($success) {
+            if ($this->mysqli->insert_id === 0) return true;
+            else return $this->mysqli->insert_id;
+        }
+        else return false;
     }
 
     public function __destruct() {

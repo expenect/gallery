@@ -12,12 +12,13 @@ class Model {
         $this->table_name=$table_name;
     }
 
-    public function getAll($order = false, $up = true) {
+    public function getAll($order = false, $up = true){
 		$ol = $this->getOL($order, $up);
-		$query = "SELECT * FROM `".$this->table_name."` $ol";
+		$query = "SELECT * FROM `" . $this->table_name . "` $ol";
 		return $this->db->select($query);
-    }
-	
+	}
+
+
 	protected function getOL($order, $up) {
 		if ($order) {
 			$order = "ORDER BY `$order`";

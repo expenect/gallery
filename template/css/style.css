@@ -148,6 +148,24 @@ body{
 
 }
 
+#sort{
+    width:300px;
+}
+
+#sort h4{
+    padding:0;
+    margin:0;
+    text-align:center;
+}
+
+#sort a{
+    color:black;
+}
+
+#sort a:hover{
+    color:#00a651;
+}
+
 #footer_container{
     width:100%;
 }
