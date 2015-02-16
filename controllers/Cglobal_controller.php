@@ -4,7 +4,7 @@ require_once("config.php");
 
 abstract class CGlobal{
 
-    private $config;
+    protected $config;
     public $template;
 
     public function __construct(){

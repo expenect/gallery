@@ -24,12 +24,40 @@ class manage{
             $model = datebase::getDB();
             $query = "INSERT INTO  `gallery`.`photo` (`id` ,url ,description ,date ,size) VALUES (NULL ,  '".$this->data['img']."',  '".$this->data['description']."',  '".$this->data['date']."',  '".$this->data['size']."');";
             if (!$model->query($query)){
-                $_SESSION["message"] = "Ошибка в запросе";
+                $_SESSION["message"] = "Помилка при додані запису!";
                 $flag = false;
             }
         }
 
         return $flag;
+    }
+
+    public function edit_photo($data){
+        $this->data=$data;
+        $img = $_FILES["img_edit"];
+        $this->data['img'] = $data["url_photo"];
+        if ($this->data["description_edit"] == "") {
+            $_SESSION['message'] = "Поле опису виявилося пустим!";
+            return false;
+        }
+
+        if (!$img["name"]==""){
+            if (!$this->load_img($_FILES["img_edit"])){
+                return false;
+            }
+
+            if ($this->data["url_photo"]!="" && file_exists("../template/img/".$this->data["url_photo"])){
+                unlink ("../template/img/".$this->data["url_photo"]);
+            }
+        }
+
+        $model = datebase::getDB();
+        $query=("UPDATE  `gallery`.`photo` SET  `description` =  '".$this->data['description_edit']."', `url` = '".$this->data['img']."',`size`='".$this->data['size']."'  WHERE  `photo`.`id` =".$this->data['id'].";");
+        if (!$model->query($query)){
+            $_SESSION["message"] = "Помилка при редагувані запису!";
+            return false;
+        }
+        return true;
     }
 
     private function load_img($img){

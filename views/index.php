@@ -2,7 +2,7 @@
     <div id="download">
         <h3>Додати нову картинку</h3>
         <hr/>
-        <form enctype="multipart/form-data" method="post" action="../classes/download.php">
+        <form enctype="multipart/form-data" method="post" action="../post/add.php">
             <table>
                 <tr><td colspan="2" style="color:red;"><?echo $_SESSION['message'];unset($_SESSION['message']);?></td></tr>
                 <tr><td colspan="2">Опис:</td></tr>
@@ -26,7 +26,15 @@
             if ($j==3){$j=0;?>
         <tr>
             <?} $j++;?>
-            <td><a href="#"><div class="img_resize"><img src="../<?=$this->dir_img.$this->photo[$i]["url"];?>" alt=""/></div><?=$this->photo[$i]["description"];?></a>    <p><?=date("d.m.Y",strtotime($this->photo[$i]["date"]));?></p></td>
+            <td>
+                <a href=""><img src="../template/img/delete.png" id="img_delete"/></a>
+                <a href="?link=edit&id=<?=$this->photo[$i]['id']?>">
+                    <div class="img_resize">
+                        <img src="../<?=$this->dir_img.$this->photo[$i]["url"];?>" alt=""/>
+                    </div><?=$this->photo[$i]["description"];?>
+                </a>
+                <p><?=date("d.m.Y",strtotime($this->photo[$i]["date"]));?></p>
+            </td>
             <?if ($j==3){?>
         </tr>
             <?}?>

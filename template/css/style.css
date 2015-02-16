@@ -204,3 +204,11 @@ body{
     line-height: 1.2;
     text-align: left;
 }
+
+#img_delete{
+    position:absolute;
+    margin-left:260px;
+    margin-top:25px;
+    width:17px;
+    z-index:999;
+}

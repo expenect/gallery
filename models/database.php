@@ -31,13 +31,18 @@ class datebase{
         return $array;
     }
 
-    public function query($query){
+    public function query($query,$ret=false){
         $success=$this->mysqli->query($query);
-        if ($success) {
-            if ($this->mysqli->insert_id === 0) return true;
-            else return $this->mysqli->insert_id;
+        if (!$ret) {
+            if (!$success) return false;
         }
-        else return false;
+        else {
+              if (!$success && $ret) {
+                return $success->fetch_assoc();
+              }
+              else return false;
+        }
+        return true;
     }
 
     public function __destruct() {

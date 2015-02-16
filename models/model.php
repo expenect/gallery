@@ -26,7 +26,13 @@ class Model {
 		}
 		return "$order";
 	}
-    
+
+	public function getID($id){
+		if (!is_numeric($id)) return false;
+		$query = "SELECT * FROM `".$this->table_name."` Where `id`=".$id;
+		return $this->db->select($query,true);
+	}
+
    	public function getTableName() {
 	   return $this->table_name;
     }
