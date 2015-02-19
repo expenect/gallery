@@ -15,7 +15,6 @@ class manage{
         session_start();
         $flag = true;
         $this->data["description"] = $data ["description"];
-        $this->data["date"] = date("y-m-d");
         $this->data["img"] = $_FILES["img"];
         $_SESSION["description"] = $data["description"];
 
@@ -27,15 +26,27 @@ class manage{
         $flag = $this->load_img($this->data["img"]);
 
         if ($flag){
-            $model = datebase::getDB();
-            $query = "INSERT INTO  `gallery`.`photo` (`id` ,url ,description ,date ,size) VALUES (NULL ,  '".$this->data['img']."',  '".$this->data['description']."',  '".$this->data['date']."',  '".$this->data['size']."');";
-            if (!$model->query($query)){
+            if(!$this->add_record()){
                 $_SESSION["message"] = "Помилка при додані запису!";
                 $flag = false;
             }
         }
 
         return $flag;
+    }
+
+    public function add_record(){
+        $this->data["date"] = date("y-m-d");
+        $model = datebase::getDB();
+        $query = "INSERT INTO  `gallery`.`photo` (`id` ,url ,description ,date ,size) VALUES (NULL ,  '".$this->data['img']."',  '".$this->data['description']."',  '".$this->data['date']."',  '".$this->data['size']."');";
+        if (!$model->query($query)){
+            return false;
+        }
+        return true;
+    }
+
+    public function set($item ,$date){
+        $this->data[$item] = $date;
     }
 
     public function edit_photo($data){
@@ -69,7 +80,7 @@ class manage{
     public function delete_photo($data){
         $file_url = $this->dir_img.$data["url_photo"];
         if (file_exists($file_url)){
-            unset($file_url);
+            unlink($file_url);
         }
         $model = datebase::getDB();
         $model->query("DELETE FROM `gallery`.`photo` WHERE `photo`.`id` = ".$data['id']);
@@ -77,7 +88,7 @@ class manage{
         return true;
     }
 
-    private function load_img($img){
+    public function load_img($img){
         $file_name = $img["name"];
         $type = strtolower(substr($file_name, 1 + strrpos($file_name, ".")));
         if ($type=="jpg" || $type=="jpeg" || $type=="png");

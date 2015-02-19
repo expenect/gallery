@@ -6,7 +6,7 @@
             <table>
                 <tr><td colspan="2" style="color:red;"><?echo $_SESSION['message'];unset($_SESSION['message']);?></td></tr>
                 <tr><td colspan="2">Опис:</td></tr>
-                <tr><td colspan="2"><textarea name="description" maxlength="200" style="max-width: 890px;"><?=$_SESSION["description"];?></textarea></td></tr>
+                <tr><td colspan="2"><textarea name="description" maxlength="200" style="max-width: 890px;"><?echo $_SESSION['description'];unset($_SESSION['description']);?></textarea></td></tr>
                 <tr style="float: left;"><td>Виберіть фото:</td><td><input type="file" name="img"/></td></tr>
                 <tr><td colspan="2"><input type="submit" value="Відправити"/></td></tr>
             </table>
@@ -19,7 +19,7 @@
         <a href="?sort=size">По розміру</a>
         <a href="/">За замовчуванням</a>
     </div>
-    <table class="cont_tab">
+    <table id="cont_tab">
         <tbody>
             <tr>
         <?$j=0; for ($i=0; $i<count($this->photo); $i++){

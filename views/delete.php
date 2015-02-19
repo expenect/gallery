@@ -12,7 +12,7 @@
                 <tr><td colspan="2"><textarea name="description_edit" maxlength="200" style="max-width: 890px;"><?=$this->data_del[0]["description"]?></textarea></td></tr>
                 <tr><td colspan="2">
                         <input type="hidden" value="<?=$_GET["id"]?>" name="id"/>
-                        <input type="hidden" value="<?=$_GET["url"]?>" name="url_photo"/>
+                        <input type="hidden" value="<?=$this->data_del[0]["url"]?>" name="url_photo"/>
                     </td></tr>
                 <tr><td><input type="submit" name="yes" value="Так"/></td><td><input type="submit" name="no" value="Ні"/></td></tr>
             </table>

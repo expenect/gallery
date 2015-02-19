@@ -7,6 +7,8 @@
     <meta name="keywords" content="" />
 	<meta name="description" content="" />
 	<link href="<?=$this->css?>" rel="stylesheet">
+    <script type="text/javascript" src="../<?=$this->dir_js?>jquery.js"></script>
+    <script type="text/javascript" src="../<?=$this->dir_js?>view_gallery.js"></script>
 </head>
 <body>
         <div id="layer_head">
@@ -16,12 +18,12 @@
                 </a>
                 <ul id="menu">
                     <li>
-                        <a href="<?=$this->link_site;?>">
+                        <a href="<?=$this->link_site?>">
                             Синхроный
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="<?=$this->link_site?>?link=asynchronous">
                             Асинхроный
                         </a>
                     </li>

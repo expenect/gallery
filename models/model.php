@@ -1,6 +1,18 @@
 <?php
-require_once ("config.php");
-require_once ("models/database.php");
+
+if (file_exists("config.php")) {
+	require_once("config.php");
+}
+else{
+	require_once("../config.php");
+}
+
+if (file_exists("models/database.php")) {
+	require_once("models/database.php");
+}
+else{
+	require_once("../models/database.php");
+}
 
 class Model {
     
