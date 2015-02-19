@@ -11,7 +11,7 @@ if (isset($_POST['no'])){
     exit;
 }
 
-if ($manage->delete_photo($_POST)){
+if ($manage->delete_photo($_POST['id'])){
     $_SESSION['message']="Видалення виконано успішно!";
     
 }

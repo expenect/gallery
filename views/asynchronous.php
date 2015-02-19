@@ -14,17 +14,12 @@
         </form>
         <hr/>
     </div>
-    <div id="sort">
-        <h4>Сортування</h4>
-        <strong onclick='show_content("date");'>По даті</strong>
-        <strong onclick='show_content("size");'>По розміру</strong>
-        <strong onclick='show_content();'>За замовчуванням</strong>
-    </div>
     <div id="load" style="display:none;margin-left: 230px;">
-        <img src="../template/img/gamno_style.gif" alt=""/>
+    <img src="../template/img/gamno_style.gif" alt=""/>
+</div>
+    <div id="container_cont">
+
     </div>
-    <table id="cont_tab">
-    </table>
 </div>
 <script>
     $(document).ready ( function(){

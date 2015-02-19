@@ -1,6 +1,6 @@
 <?
 require_once ("database.php");
-
+require_once ("model.php");
 class manage{
 
     private $data = array();
@@ -63,7 +63,7 @@ class manage{
                 return false;
             }
 
-            if ($this->data["url_photo"]!="" && file_exists("../template/img/".$this->data["url_photo"])){
+            if ($this->data["url_photo"]!="" && file_exists($this->dir_img.$this->data["url_photo"])){
                 unlink ("../template/img/".$this->data["url_photo"]);
             }
         }
@@ -77,13 +77,15 @@ class manage{
         return true;
     }
 
-    public function delete_photo($data){
-        $file_url = $this->dir_img.$data["url_photo"];
+    public function delete_photo($id){
+        $model = new Model("photo");
+        $data = $model->getID($id);
+        $file_url = $this->dir_img.$data[0]["url"];
         if (file_exists($file_url)){
             unlink($file_url);
         }
         $model = datebase::getDB();
-        $model->query("DELETE FROM `gallery`.`photo` WHERE `photo`.`id` = ".$data['id']);
+        $model->query("DELETE FROM `gallery`.`photo` WHERE `photo`.`id` = ".$id);
 
         return true;
     }

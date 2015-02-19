@@ -13,9 +13,14 @@ $dir_img = $config->dir_template.$config->dir_img;
 
 
 
-$content = '
-        <tbody>
-        <tr>';
+$content = "<div id=\"sort\">
+					<h4>Сортування</h4>
+					<strong onclick='show_content(\"date\");'>По даті</strong>
+					<strong onclick='show_content(\"size\");'>По розміру</strong>
+					<strong onclick='show_content();'>За замовчуванням</strong>
+				</div>
+           <table id=\"cont_tab\"><tbody>
+        <tr>";
 $j=0;
 	for ($i=0; $i<count($photo); $i++){
 	if ($j==3){
@@ -24,8 +29,8 @@ $j=0;
 	}
 		$j++;
 		$content.="<td>";
-		$content.='<a href="#"><img src="../template/img/delete.png" id="img_delete"/></a>
-				<a href="#">
+		$content.='<a onclick="delete_photo('.$photo[$i]["id"].')"><img src="../template/img/delete.png" id="img_delete"/></a>
+				<a onclick="edit_photo('.$photo[$i]["id"].')">
 			<div class="img_resize">
 				<img src="../'.$dir_img.$photo[$i]["url"].'" alt=""/>
 			</div>'.$photo[$i]["description"].'</a>
@@ -35,7 +40,7 @@ $j=0;
 		$content.="</tr>";
 	}
 }
-$content.="</tbody>";
+$content.="</tbody></tabel>";
 
 
 if($error){
