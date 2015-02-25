@@ -111,7 +111,8 @@ class manage{
 
         $new_name = 'photo_'.time().'_'.rand(1, 100).'.'.$type;
 
-        if (!move_uploaded_file($img["tmp_name"], "../template/img/index/".$new_name)){
+
+        if (!move_uploaded_file($img["tmp_name"], ROOT_DIR."template/img/index/".$new_name)){
             $_SESSION["message"] = $img["tmp_name"];
             return false;
         }
