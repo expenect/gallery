@@ -1,9 +1,10 @@
-<?
-class config{
+<?php
+class config
+{
     public $sitename = "gallery";
 
     public $name_autor = "expenect";
-    public $link_site = "http://work.com";
+    public $link_site = "http://myslyvyi.test.local/";
 
     public $views_dir = "views/";
     public $dir_img = "img/";
@@ -15,8 +16,7 @@ class config{
 
 
     public $db_host = "localhost";
-    public $db_name = "gallery";
-    public $db_user = "root";
-    public $db_password = "";
-
+    public $db_name = "myslyvyi";
+    public $db_user = "myslyvyi";
+    public $db_password = "14Lohapi";
 }

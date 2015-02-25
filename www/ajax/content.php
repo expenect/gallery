@@ -48,6 +48,5 @@ if($error){
 	echo json_encode(array('result' => 'error', 'msg' => $error));
 }
 else echo json_encode(array('result' => 'content','content'=> $content));
-?>
 
 

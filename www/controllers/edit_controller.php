@@ -1,4 +1,4 @@
-<?
+<?php
 require_once ("controllers/Cglobal_controller.php");
 require_once ("models/model.php");
 

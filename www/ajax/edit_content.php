@@ -12,7 +12,8 @@ $dir_img = $config->dir_template.$config->dir_img;
 
 $content ='<div id="edit">
         <h3>Редагування</h3>
-		<iframe style="display: none;" src="../ajax/edit_photo.php" id="frame_edit" name="frame_edit" onload="frame_ed();"></iframe>
+		<iframe style="display: none;" src="../ajax/edit_photo.php" id="frame_edit" name="frame_edit" onload="frame_ed();">
+		</iframe>
         <form enctype="multipart/form-data" method="post" action="../ajax/edit_photo.php" target="frame_edit">
             <table>
                 <tr><td colspan="2" ><strong style="color:red; font-weight: normal;" id="edit_error"></strong></td></tr>
@@ -35,6 +36,6 @@ if($error){
 	echo json_encode(array('result' => 'error', 'msg' => $error));
 }
 else echo json_encode(array('result' => 'content','content'=> $content));
-?>
+
 
 

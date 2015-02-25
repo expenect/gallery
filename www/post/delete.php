@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 require_once("../models/manage.php");
 require_once("../config.php");

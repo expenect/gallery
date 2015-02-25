@@ -1,4 +1,4 @@
-<?
+<?php
 require_once ("database.php");
 require_once ("model.php");
 class manage{
@@ -38,7 +38,7 @@ class manage{
     public function add_record(){
         $this->data["date"] = date("y-m-d");
         $model = datebase::getDB();
-        $query = "INSERT INTO  `gallery`.`photo` (`id` ,url ,description ,date ,size) VALUES (NULL ,  '".$this->data['img']."',  '".$this->data['description']."',  '".$this->data['date']."',  '".$this->data['size']."');";
+        $query = "INSERT INTO  `photo` (`id` ,url ,description ,date ,size) VALUES (NULL ,  '".$this->data['img']."',  '".$this->data['description']."',  '".$this->data['date']."',  '".$this->data['size']."');";
         if (!$model->query($query)){
             return false;
         }
@@ -69,7 +69,7 @@ class manage{
         }
 
         $model = datebase::getDB();
-        $query=("UPDATE  `gallery`.`photo` SET  `description` =  '".$this->data['description_edit']."', `url` = '".$this->data['img']."',`size`='".$this->data['size']."'  WHERE  `photo`.`id` =".$this->data['id'].";");
+        $query=("UPDATE  `photo` SET  `description` =  '".$this->data['description_edit']."', `url` = '".$this->data['img']."',`size`='".$this->data['size']."'  WHERE  `photo`.`id` =".$this->data['id'].";");
         if (!$model->query($query)){
             $_SESSION["message"] = "Помилка при редагувані запису!";
             return false;
@@ -85,7 +85,7 @@ class manage{
             unlink($file_url);
         }
         $model = datebase::getDB();
-        $model->query("DELETE FROM `gallery`.`photo` WHERE `photo`.`id` = ".$id);
+        $model->query("DELETE FROM `photo` WHERE `photo`.`id` = ".$id);
 
         return true;
     }
@@ -110,7 +110,11 @@ class manage{
         }
 
         $new_name = 'photo_'.time().'_'.rand(1, 100).'.'.$type;
-        copy($img["tmp_name"], "../template/img/index/".$new_name);
+
+        if (!move_uploaded_file($img["tmp_name"], "../template/img/index/".$new_name)){
+            $_SESSION["message"] = $img["tmp_name"];
+            return false;
+        }
 
         $this->data["img"] = "index/".$new_name;
         $this->data["size"] = $img["size"];

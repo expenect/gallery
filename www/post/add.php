@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 require_once("../models/manage.php");
 require_once("../config.php");
@@ -10,4 +10,3 @@ if ($manage->add_photo($_POST)){
 }
 header("Location:".$config->link_site);
 exit;
-?>

@@ -1,4 +1,4 @@
-<?
+<?php
 require_once("controllers/template_controller.php");
 require_once("config.php");
 
